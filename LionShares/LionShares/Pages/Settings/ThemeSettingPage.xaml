@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ThemeSettingPageXaml
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:LionShares.Pages"
+    xmlns:localizer="clr-namespace:LionShares.Extensions"
+    xmlns:template="clr-namespace:LionShares.Templates"
+    x:Class="LionShares.Pages.ThemeSettingPage"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    Title="{Binding Title}">
+
+    <RelativeLayout>
+
+        <ListView
+            Margin="0,20,0,0"
+            BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=0}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+            SeparatorVisibility="None"
+            SeparatorColor="{ DynamicResource ListViewSeparatorColor }"
+            ItemsSource="{Binding ThemeList}"            
+            ItemSelected="ListView_ItemSelected"
+            RowHeight="170"
+            HasUnevenRows="false">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <template:ThemeItemTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+       
+    </RelativeLayout>
+
+</base:ThemeSettingPageXaml>

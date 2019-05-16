@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:AboutPageXaml
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:LionShares.Pages"
+    xmlns:local="clr-namespace:LionShares"
+    xmlns:localizer="clr-namespace:LionShares.Extensions"
+    x:Class="LionShares.Pages.AboutPage"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    Title="{Binding Title}">
+
+    <base:AboutPageXaml.Resources>
+        <ResourceDictionary>
+
+            <Color
+                x:Key="PrimaryTextColor">#333333</Color>
+            <Color
+                x:Key="PseudoTableSectionTitleBackgroundColor">#05000000</Color>
+            <Color
+                x:Key="PseudoTableSectionLineBackgroundColor">#22000000</Color>
+
+            <x:Double
+                x:Key="PseudoTableSectionTitleFontSize">12</x:Double>
+            <x:Double
+                x:Key="PseudoTableSectionTitleHeight">60</x:Double>
+            <x:Double
+                x:Key="PseudoTableSectionTitleLineHeight">1</x:Double>
+
+            <x:Double
+                x:Key="PseudoTableSectionTextHeight">44</x:Double>
+            <x:Double
+                x:Key="PseudoTableSectionLineHeight">1</x:Double>
+
+            <Style
+                x:Key="PseudoTableSectionTitleStyle"
+                TargetType="Label">
+                <Setter
+                    Property="TextColor"
+                    Value="{ DynamicResource AccentColor }" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="End" />
+                <Setter
+                    Property="FontSize"
+                    Value="{ StaticResource PseudoTableSectionTitleFontSize }" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Start" />
+                <Setter
+                    Property="TranslationY"
+                    Value="-10" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="{ StaticResource PseudoTableSectionTitleHeight }" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionTitleIconStyle"
+                TargetType="Label"
+                BasedOn="{ StaticResource FontIcon }">
+                <Setter
+                    Property="TextColor"
+                    Value="{ DynamicResource AccentColor }" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="End" />
+                <Setter
+                    Property="FontSize"
+                    Value="{ StaticResource BaseFontSize }" />
+                <Setter
+                    Property="TranslationY"
+                    Value="-10" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionLineBaseStyle"
+                TargetType="BoxView">
+                <Setter
+                    Property="HeightRequest"
+                    Value="{ StaticResource PseudoTableSectionLineHeight }" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionLineStyle"
+                BasedOn="{ StaticResource PseudoTableSectionLineBaseStyle }"
+                TargetType="BoxView">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{ StaticResource PseudoTableSectionLineBackgroundColor }" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionTitleLineStyle"
+                BasedOn="{ StaticResource PseudoTableSectionLineBaseStyle }"
+                TargetType="BoxView">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{  DynamicResource AccentColor }" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="{ StaticResource PseudoTableSectionTitleLineHeight }" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="End" />
+                <Setter
+                    Property="Margin"
+                    Value="-10,0" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionTitleBackgroundStyle"
+                TargetType="Grid">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{ StaticResource PseudoTableSectionTitleBackgroundColor }" />
+                <Setter
+                    Property="Padding"
+                    Value="10,0" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionTextStyle"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="{ StaticResource BaseFontSize }" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Start" />
+                <Setter
+                    Property="TextColor"
+                    Value="{ DynamicResource BaseLightTextColor }" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="{ StaticResource PseudoTableSectionTextHeight }" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionValueStyle"
+                BasedOn="{ StaticResource PseudoTableSectionTextStyle }"
+                TargetType="Label">
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="End" />
+                <Setter
+                    Property="TextColor"
+                    Value="{ DynamicResource BaseTextColor }" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionLinkStyle"
+                BasedOn="{ StaticResource PseudoTableSectionTextStyle }"
+                TargetType="Label">
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="End" />
+                <Setter
+                    Property="TextColor"
+                    Value="{ DynamicResource AccentColor }" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionSwitchStyle"
+                TargetType="Switch">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="End" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+            </Style>
+
+            <Style
+                x:Key="PseudoTableSectionGroupStyle"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Padding"
+                    Value="10,0" />
+                <Setter
+                    Property="Orientation"
+                    Value="Horizontal" />
+            </Style>
+
+
+        </ResourceDictionary>
+    </base:AboutPageXaml.Resources>
+
+    <RelativeLayout>
+
+        <ScrollView
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=0}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+
+            <StackLayout
+                Spacing="0"
+                Padding="0,0,0,20">
+
+                <!-- GENERAL -->
+                <Grid
+                    Style="{ StaticResource PseudoTableSectionTitleBackgroundStyle }">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        Text="{ x:Static local:FontAwesomeFont.StarHalfO }"
+                        Style="{ StaticResource PseudoTableSectionTitleIconStyle }" />
+
+                    <Label
+                        Grid.Column="1"
+                        Style="{ StaticResource PseudoTableSectionTitleStyle }"
+                        Text="{localizer:Translate AppInfo}" />
+
+                    <BoxView
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Style="{ StaticResource PseudoTableSectionTitleLineStyle }" />
+
+                </Grid>
+
+                <StackLayout
+                    Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate AppName}"
+                        Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate AppNameText}"
+                        Style="{ StaticResource PseudoTableSectionValueStyle }">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TapGestureCount"
+                                NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+                <BoxView
+                    Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+                <StackLayout
+                    Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate AppVersion}"
+                        Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{Binding AppVersion}"
+                        Style="{ StaticResource PseudoTableSectionValueStyle }" />
+                </StackLayout>
+
+                <BoxView
+                    Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+                <StackLayout
+                    Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate Device}"
+                        Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{Binding Model}"
+                        Style="{ StaticResource PseudoTableSectionValueStyle }" />
+                </StackLayout>
+
+                <BoxView
+                    Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+
+                <Grid
+                    Margin="10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate DeviceId}"
+                        Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding DeviceId}"
+                        Style="{ StaticResource PseudoTableSectionValueStyle }"
+                        VerticalOptions="Center"
+                        LineBreakMode="MiddleTruncation" />
+                </Grid>
+
+                <BoxView
+                    Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+                <StackLayout
+                    Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate Os}"
+                        Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{Binding Platform}"
+                        Style="{ StaticResource PseudoTableSectionValueStyle }" />
+                </StackLayout>
+
+                <BoxView
+                    Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+                <StackLayout
+                    Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate OsVersion}"
+                        Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{Binding Version}"
+                        Style="{ StaticResource PseudoTableSectionValueStyle }" />
+                </StackLayout>
+
+                <BoxView
+                    Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+
+                <!-- SETTINGS -->
+                <Grid
+                    Style="{ StaticResource PseudoTableSectionTitleBackgroundStyle }">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        Text="{ x:Static local:FontAwesomeFont.Cog }"
+                        Style="{ StaticResource PseudoTableSectionTitleIconStyle }" />
+
+                    <Label
+                        Grid.Column="1"
+                        Style="{ StaticResource PseudoTableSectionTitleStyle }"
+                        Text="{localizer:Translate Settings}" />
+
+                    <BoxView
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Style="{ StaticResource PseudoTableSectionTitleLineStyle }" />
+
+                </Grid>
+
+                <StackLayout
+                    Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{localizer:Translate Theme}"
+                        Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{Binding CurrentTheme}"
+                        Style="{ StaticResource PseudoTableSectionLinkStyle }">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="ThemeTapped"
+                                NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+                <BoxView
+                    Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+                <!-- ADMIN -->
+                <StackLayout
+                    IsVisible="{Binding IsAdmin}"
+                    Margin="0">
+
+                    <Grid
+                        Style="{ StaticResource PseudoTableSectionTitleBackgroundStyle }">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="Auto" />
+                            <ColumnDefinition
+                                Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            Text="{ x:Static local:FontAwesomeFont.Wrench }"
+                            Style="{ StaticResource PseudoTableSectionTitleIconStyle }" />
+
+                        <Label
+                            Grid.Column="1"
+                            Style="{ StaticResource PseudoTableSectionTitleStyle }"
+                            Text="{localizer:Translate Admin}" />
+
+                        <BoxView
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Style="{ StaticResource PseudoTableSectionTitleLineStyle }" />
+
+                    </Grid>
+
+                    <StackLayout
+                        Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+                        <Label
+                            VerticalOptions="Center"
+                            Text="{localizer:Translate AdminMode}"
+                            Style="{ StaticResource PseudoTableSectionTextStyle }" />
+
+                        <Switch
+                            IsToggled="{Binding IsAdmin}"
+                            Style="{ StaticResource PseudoTableSectionSwitchStyle }" />
+                    </StackLayout>
+
+                    <BoxView
+                        Style="{ StaticResource PseudoTableSectionLineStyle }" />
+                    
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</base:AboutPageXaml>    

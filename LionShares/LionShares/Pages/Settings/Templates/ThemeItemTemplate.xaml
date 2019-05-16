@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LionShares.Templates.ThemeItemTemplate"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}">
+
+    <Grid
+        Margin="20,0,20,20"
+        ColumnSpacing="0"
+        RowSpacing="0"
+        BackgroundColor="{DynamicResource BasePageColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Margin="20"
+            Grid.ColumnSpan="2"
+            Text="{Binding Name}" />
+
+        <Grid
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="20"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="30" />
+            </Grid.RowDefinitions>
+
+             <BoxView
+                Grid.Column="0"
+                Color="{Binding MainWrapperBackgroundColor}" />
+           <BoxView
+                Grid.Column="1"
+                Color="{Binding AccentColor}" />
+            <BoxView
+                Grid.Column="2"
+                Color="{Binding BasePageColor}" />
+            <BoxView
+                Grid.Column="3"
+                Color="{Binding BaseTextColor}" />
+
+        </Grid>
+
+        <StackLayout
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="20">
+            <Button
+                Text="Apply"
+                Clicked="ApplyClicked"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"                
+                WidthRequest="100"
+                CommandParameter="{Binding Name}"
+                Style="{DynamicResource PrimaryActionButtonStyle}" />
+        </StackLayout>
+
+
+    </Grid>
+
+</ContentView>
